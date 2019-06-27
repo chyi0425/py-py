@@ -1,3 +1,11 @@
+class Test:
+    def __init__(self,foo):
+        self.__foo = foo
+
+    def __bar(self):
+        print(self.__foo)
+        print('__bar')
+
 class Student(object):
 
     # __init__是一个特殊的方法用于在创建对象时进行初始化操作
@@ -24,6 +32,8 @@ def main():
     stu2 = Student('李四',15)
     stu2.study('思想品德')
     stu2.watch_movie()
+
+    
 
 if __name__ == "__main__":
     main()
