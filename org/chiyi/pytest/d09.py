@@ -54,6 +54,19 @@ class Person(object):
             print('%s正在玩斗地主。' % self._name)
 
 
+from time import time,localtime,sleep
+
+class Clock(object):
+    def __init__(self,hour =0,minute=0,second=0):
+        self._hour = hour
+        self._minute = minute
+        self._second = second
+
+    @classmethod
+    def now(cls):
+        ctime = localtime(time())
+        return cls(ctime.tm_hour,ctime.tm_min,ctime.tm_sec)
+
 def main():
     person = Person('张三', 12)
     person.play()
@@ -72,7 +85,9 @@ def main():
     else:
         print('无法构成三角形')
 
-        
+
+
+
 
 
 if __name__ == "__main__":
