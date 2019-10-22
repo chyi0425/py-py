@@ -5,9 +5,9 @@ import requests
 
 # create a custom thread class by extends the Thread class
 
- class DownloadHandler(Thread):
+class DownloadHandler(Thread):
 
-     def __init__(self,url):
+    def __init__(self,url):
          super().__init__()
          self.url = url
     
