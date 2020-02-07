@@ -5,7 +5,7 @@ try:
 except ZeroDivisionError as e:
     # Optionally, log e some where
     print('Sorry, something wnent wrong')
-except:
+else:
     print('Something really went wrong')
 finally:
     print('This always runs on success or failure')
