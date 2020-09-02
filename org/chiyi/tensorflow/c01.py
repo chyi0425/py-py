@@ -50,3 +50,18 @@ print(np.arange(10))
 print(np.arange(0,10))
 print(np.arange(1,4,0.5))
 print(np.arange(9,-1,-1))
+
+# 1.2 存取元素
+np.random.seed(2020)
+nd11 = np.random.random([10])
+# 获取指定位置的元素，获取第4个元素
+nd11[3]
+# 截取一段数据
+nd11[3:6]
+# 截取固定间隔元素
+nd11[1:6:2]
+# 倒序取数
+nd11[::-2]
+# 截取一个多维数组的一个区域内数据
+nd12 = np.arange(25).reshape([5,5])
+nd12[1:3,1:3]
