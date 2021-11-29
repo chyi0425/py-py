@@ -1,3 +1,4 @@
+from math import gcd
 from operator import getitem
 
 
@@ -24,10 +25,10 @@ def eq_rat(x, y):
 
 
 # 使用元组表示有理数
-from math import gcd
+
 
 def make_rat(n, d):
-    g = gcd(n,d)
+    g = gcd(n, d)
     return (n//g, d//g)
 
 
@@ -46,8 +47,63 @@ def str_rat(x):
     return '{0}/{1}'.format(numer(x), denom(x))
 
 
-half = make_rat(1,2)
+half = make_rat(1, 2)
 str_rat(half)
-third = make_rat(1,3)
-str_rat(mul_rat(half,third))
-str_rat(add_rat(half,third))
+third = make_rat(1, 3)
+str_rat(mul_rat(half, third))
+str_rat(add_rat(half, third))
+
+
+def make_pair(x, y):
+    """Return a function that behaves like a pair."""
+    def dispatch(m):
+        if m == 0:
+            return x
+        elif m == 1:
+            return y
+    return dispatch
+
+
+def getitem_pair(p, i):
+    """Return the element at index i of pair p."""
+    return p(i)
+
+
+empty_rlist = None
+
+
+def make_rlist(first, rest):
+    """Make a recursive list from its first element and the rest"""
+    return (first, rest)
+
+
+def first(s):
+    """Return the first element of a recursive list s."""
+    return s[0]
+
+
+def rest(s):
+    """Return the rest of the elements of a recursive list s."""
+    return s[1]
+
+
+def len_rlist(s):
+    """Return the length of recursive list s."""
+    length = 0
+    while s != empty_rlist:
+        s, length = rest(s), length + 1
+    return length
+
+
+def getitem_rlist(s, i):
+    """Return the length of index i of recursive list s."""
+    while i > 0:
+        s, i = rest(s), i-1
+    return first(s)
+
+counts = make_rlist(1, make_rlist(
+    2, make_rlist(3, make_rlist(4, empty_rlist))))
+
+first(counts)
+
+rest(counts)
