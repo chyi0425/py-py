@@ -109,3 +109,6 @@ venv.bak/
 *.iws
 .idea/
 out/
+
+# vscode
+.vscode/
