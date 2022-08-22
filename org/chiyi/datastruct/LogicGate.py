@@ -78,6 +78,29 @@ class NotGate(UnaryGate):
             return 1
 
 
+class Connector:
+    def __init__(self, fgate, tgate):
+        self.fromgate = fgate
+        self.togate = tgate
+
+        tgate.setNextPin(self)
+
+    def getFrom(self):
+        return self.fromgate
+
+    def getTo(self):
+        return self.togate
+
+    def setNextPin(self, source):
+        if self.pinA == None:
+            self.pinA = source
+        else:
+            if self.pinB == None:
+                self.pinB = source
+            else:
+                raise RuntimeError("Error: NO EMPTY PINS")
+
+
 if __name__ == '__main__':
     g1 = AndGate("G1")
     g1.getOutput()
