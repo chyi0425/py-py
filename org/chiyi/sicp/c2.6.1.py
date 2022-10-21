@@ -33,4 +33,14 @@ def bind_method(value, instance):
 
 def make_class(attributes, base_class=None):
     """Return a new class, which is a dispatch dictionary."""
-    def get_value
+    def get_value(name):
+        if name in attributes:
+            return attributes[name]
+        elif base_class is not None:
+            return base_class['get'](name)
+
+    def set_value(name,value):
+        attributes[name] = value
+
+    def new(*args):
+        return init_instance(cls,*args)
